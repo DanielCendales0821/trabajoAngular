@@ -1,0 +1,56 @@
+<div id="sidebar" class="tm-sidebar-left uk-background-default">
+    <div class="user">
+        <img id="avatar" width="200" height="200" class="uk-border-circle" src="../../../../assets/images/logo.png" />
+        <div class="uk-margin-top"></div>
+        <h3>
+            <strong>
+                {{user.user.name}}{{user.user.lastName}}
+            </strong>
+        </h3>
+        <div id="email" class="uk-text-truncate">
+            <h6>{{user.user.email}}</h6>
+        </div>
+        <div id="email" class="uk-text-truncate">
+            <h6>{{user.user.role}}</h6>
+        </div>
+    </div>
+
+    <ul class="uk-nav uk-nav-default">
+        <hr class="uk-divider-icon">
+        <li style="text-align: center;">
+            <a routerLink="/request" routerLinkActive="active">
+                <i class="fas fa-users"></i>
+                <strong>  Requerimientos</strong>
+            </a>
+        </li>
+        <hr class="uk-divider-icon">
+        <li style="text-align: center;">
+            <a routerLink="/usuario" routerLinkActive="active">
+                <i class="fas fa-users"></i>
+                <strong>  Usuarios</strong>
+            </a>
+        </li>
+        <hr class="uk-divider-icon">
+        <li style="text-align: center;">
+            <a routerLink="/costumer"><i class="fas fa-cogs"></i><b>  Clientes</b></a>
+        </li>
+        <hr class="uk-divider-icon">
+        <li style="text-align: center;">
+            <a routerLink="/insurance"><i class="fas fa-car-crash"></i><b>   Seguros</b></a>
+        </li>
+
+        <!-- <hr class="uk-divider-icon">
+        <li style="text-align: center;">
+            <a routerLink="/insurance/customer"><i class="fas fa-car-crash"></i><b>Seguros y Clientes</b></a>
+        </li> -->
+
+        <hr class="uk-divider-icon">
+        <li style="text-align: center;">
+            <a routerLink="/service"><i class="fas fa-car-crash"></i><b>   Servicios</b></a>
+        </li>
+        <hr class="uk-divider-icon">
+        <li style="text-align: center;">
+            <a routerLink="/technical"><i class="fas fa-car-crash"></i><b>   Tecnicos</b></a>
+        </li>
+    </ul>
+</div>

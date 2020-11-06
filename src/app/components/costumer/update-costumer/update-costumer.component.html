@@ -1,0 +1,52 @@
+<div class="uk-section-small uk-section-default header">
+  <div class="uk-container uk-container-large">
+    <h1><span class="ion-speedometer"></span> Editar Cliente</h1>
+    <ul class="uk-breadcrumb">
+      <li><a routerLink="">Inicio</a></li>
+      <li><a routerLink="/costumer">Clientes</a></li>
+      <li><span>Editar Cliente</span></li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="uk-section-small">
+  <div class="uk-container uk-container-large">
+    <div>
+      <div class="uk-card uk-card-default uk-card-body">
+
+        <form class="uk-grid-small" [formGroup]="formGroupUser" uk-grid (ngSubmit)="captureInformation()">
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Nombre Cliente</label>
+            <input class="uk-input" type="text" [(ngModel)]="customer.nameCostumer" formControlName="name" />
+          </div>
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Telefono</label>
+            <input class="uk-input" type="number" [(ngModel)]="customer.phone" formControlName="phone" />
+          </div>
+
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Dirección</label>
+            <input class="uk-input" type="text" [(ngModel)]="customer.address" formControlName="address" />
+          </div>
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Ciudad</label>
+            <input class="uk-input" type="text"[(ngModel)]="customer.city"  formControlName="city" />
+          </div>
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Departamento</label>
+            <input class="uk-input" type="text" [(ngModel)]="customer.department" formControlName="department" />
+          </div>
+
+          <div class="uk-width-1-1@s uk-flex uk-flex-center">
+            <button class="uk-button uk-button-primary submitbutton" type="submit" [disabled]="!formGroupUser.valid">
+              Guardar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

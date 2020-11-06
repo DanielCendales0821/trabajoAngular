@@ -1,0 +1,81 @@
+<div class="uk-section-small uk-section-default header">
+  <div class="uk-container uk-container-large">
+    <h1><span class="ion-speedometer"></span> Editar Tecnico</h1>
+    <ul class="uk-breadcrumb">
+      <li><a routerLink="">Inicio</a></li>
+      <li><a routerLink="/technical">Tecnicos</a></li>
+      <li><span>Editar Tecnico</span></li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="uk-section-small">
+  <div class="uk-container uk-container-large">
+    <div>
+      <div class="uk-card uk-card-default uk-card-body">
+
+        <form class="uk-grid-small" [formGroup]="formGroupUser" uk-grid (ngSubmit)="captureInformation()">
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Nombres Tecnico</label>
+            <input class="uk-input" type="text" [(ngModel)]="technical.nameTechnical" formControlName="nameTechnical" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Apellidos Tecnico</label>
+            <input class="uk-input" type="text" [(ngModel)]="technical.lastNameTechnical"
+              formControlName="lastNameTechnical" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Documento</label>
+            <input class="uk-input" type="number" [(ngModel)]="technical.document" formControlName="document" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Telefono</label>
+            <input class="uk-input" type="number" [(ngModel)]="technical.phone" formControlName="phone" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Correo Electronico</label>
+            <input class="uk-input" type="email" [(ngModel)]="technical.email" formControlName="email" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Especialidad</label>
+            <input class="uk-input" type="text" [(ngModel)]="technical.specialty" formControlName="specialty" />
+          </div>
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Banco</label>
+            <input class="uk-input" type="text" [(ngModel)]="technical.bank" formControlName="bank" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Cuenta Bancaria</label>
+            <input class="uk-input" type="number" formControlName="numberBill" [(ngModel)]="technical.numberBill"/>
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Ciudad</label>
+            <input class="uk-input" type="text" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Departamento</label>
+            <input class="uk-input" type="text" />
+          </div>
+
+
+
+          <div class="uk-width-1-1@s uk-flex uk-flex-center">
+            <button class="uk-button uk-button-primary submitbutton" type="submit" [disabled]="!formGroupUser.valid">
+              Guardar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

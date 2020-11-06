@@ -1,0 +1,43 @@
+<div class="uk-section-small uk-section-default header">
+  <div class="uk-container uk-container-large">
+    <h1><span class="ion-speedometer"></span> Relacionar Seguro y Cliente</h1>
+    <ul class="uk-breadcrumb">
+      <li><a routerLink="">Inicio</a></li>
+      <li><a routerLink="/insurance/customer">Seguro y Cliente</a></li>
+      <li><span>Relacionar Seguro y Cliente</span></li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="uk-section-small">
+  <div class="uk-container uk-container-large">
+    <div>
+      <div class="uk-card uk-card-default uk-card-body">
+
+        <form class="uk-grid-small" [formGroup]="formGroupUser" uk-grid  (ngSubmit)="captureInformation()">
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Seguro</label>
+            <select class="uk-select" formControlName="insurance">
+              <option *ngFor="let insu of insurance" value="{{insu._id}}">{{insu.nameInsurance}}</option>
+            </select>
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Cliente</label>
+            <select class="uk-select" formControlName="customer">
+              <option *ngFor="let custom of costumers" value="{{custom._id}}">{{custom.nameCostumer}}</option>
+            </select>
+          </div>
+
+
+          <div class="uk-width-1-1@s uk-flex uk-flex-center">
+            <button class="uk-button uk-button-primary submitbutton" type="submit" [disabled]="!formGroupUser.valid">
+              Guardar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

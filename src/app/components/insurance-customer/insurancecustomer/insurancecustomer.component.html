@@ -1,0 +1,84 @@
+<div class="uk-section-small uk-section-default header">
+  <div class="uk-container uk-container-large">
+    <h1><span class="ion-speedometer"></span> Seguros y Clientes</h1>
+    <ul class="uk-breadcrumb">
+      <li><a routerLink="">Inicio</a></li>
+      <li><span>Seguros y Clientes</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- End No data -->
+<div class="uk-section-small" *ngIf="insuranceCustomer.length == 0">
+  <div class="uk-container uk-container-large">
+    <div uk-alert>
+      <h2>No hay datos <i class="fas fa-table"></i></h2>
+    </div>
+  </div>
+</div>
+
+<div class="uk-section-small" *ngIf="insuranceCustomer.length != 0">
+  <div class="uk-container uk-container-large">
+    <div uk-alert>
+      <div class="uk-navbar-left">
+        <div class="uk-search uk-search-navbar">
+          <span uk-search-icon></span>
+          <input class="uk-search-input" type="text" [(ngModel)]="term" placeholder="Buscar...">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="uk-section-small" *ngIf="insuranceCustomer.length != 0">
+  <div class="uk-container uk-container-large">
+
+    <div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-3@s uk-text-center" uk-grid>
+
+      <div *ngFor="let insu of insuranceCustomerS | filter:term | paginate: { itemsPerPage: 6, currentPage: p }"
+        [shAttachMenu]="menu" (contextmenu)="leftClick(insu._id)">
+        <div class="uk-card uk-card-default uk-card-body">
+          {{insu.nameInsurance}}
+          <img src="../../../../assets/images/post.jpg">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="uk-section-small" *ngIf="insuranceCustomer.length != 0">
+  <div class="uk-container uk-container-large">
+    <div>
+      <div class="uk-card uk-card-default uk-card-body">
+        <div style="text-align: center;">
+          <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente">
+          </pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div id="floating-button" style="border-radius: 50%;" routerLink="/insurance/customer/add">
+  <span class="plus-circle" uk-icon="plus"></span>
+</div>
+
+<!-- Clic derecho -->
+
+<sh-context-menu #menu>
+  <ng-template shContextMenuItem>
+    <div routerLink="/insurance/update/{{idInsurance}}">
+      <span uk-icon="icon: trash"></span>
+      Eliminar Seguro
+    </div>
+  </ng-template>
+  <ng-template shContextMenuItem>
+    <div routerLink="/insurance/delete/{{idInsurance}}">
+      <span uk-icon="icon: pencil"></span>
+      Editar Seguro
+    </div>
+  </ng-template>
+</sh-context-menu>

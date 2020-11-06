@@ -1,0 +1,164 @@
+<div class="uk-section-small uk-section-default header">
+  <div class="uk-container uk-container-large">
+    <h1><span class="ion-speedometer"></span> Actualizar Requerimiento</h1>
+    <ul class="uk-breadcrumb">
+      <li><a routerLink="">Inicio</a></li>
+      <li><a routerLink="/request">Requerimientos</a></li>
+      <li><span>Actualizar Requerimiento</span></li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="uk-section-small">
+  <div class="uk-container uk-container-large">
+    <div>
+      <div class="uk-card uk-card-default uk-card-body">
+
+        <form class="uk-grid-small" [formGroup]="formGroupUser" uk-grid (ngSubmit)="captureInformation()">
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Direccion</label>
+            <input class="uk-input" type="text" formControlName="address" [(ngModel)]="request.address" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Ciudad</label>
+            <input class="uk-input" type="text" formControlName="city" [(ngModel)]="request.city" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Departamento</label>
+            <input class="uk-input" type="text" formControlName="department" [(ngModel)]="request.department" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Referencia</label>
+            <input class="uk-input" type="text" formControlName="reference" [(ngModel)]="request.assistance" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Celular</label>
+            <input class="uk-input" type="text" formControlName="phone" [(ngModel)]="request.phone" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Valor Serviasitimos</label>
+            <input currencyMask [options]="{ prefix: '$ ', thousands: '.', decimal: ',' }" class="uk-input" type="text"
+              formControlName="valueAsistimos" [(ngModel)]="request.valueAsistimos" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Valor Cliente</label>
+            <input currencyMask [options]="{ prefix: '$ ', thousands: '.', decimal: ',' }" class="uk-input" type="text"
+              formControlName="valueCostumer" [(ngModel)]="request.valueCostumer" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Valor Materiales</label>
+            <input currencyMask [options]="{ prefix: '$ ', thousands: '.', decimal: ',' }" class="uk-input" type="text"
+              formControlName="valueMaterials" [(ngModel)]="request.valueMaterials" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Valor Mano de Obra</label>
+            <input currencyMask [options]="{ prefix: '$ ', thousands: '.', decimal: ',' }" class="uk-input" type="text"
+              formControlName="workforce" [(ngModel)]="request.workforce" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Factura</label>
+            <input class="uk-input" type="number" formControlName="bill" [(ngModel)]="request.bill" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Estado Requerimiento</label>
+            <select class="uk-select" formControlName="state" [(ngModel)]="request.state">
+              <option value="EN PROGRESO">EN PROGRESO</option>
+              <option value="PENDIENTE">PENDIENTE</option>
+              <option value="TERMINADO">TERMINADO</option>
+              <option value="EFECTIVO">EFECTIVO</option>
+              <option value="VISITA">VISITA</option>
+            </select>
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Servicio</label>
+            <select class="uk-select" formControlName="service" [(ngModel)]="request.service">
+              <option *ngFor="let serv of service" value="{{serv._id}}">
+                {{serv.nameService}}</option>
+            </select>
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Cliente</label>
+            <select class="uk-select" formControlName="costumer" [(ngModel)]="request.costumer">
+              <option *ngFor="let custom of costumers" value="{{custom._id}}">
+                {{custom.nameCostumer}}</option>
+            </select>
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Tecnico</label>
+            <select class="uk-select" formControlName="technical" [(ngModel)]="request.technical">
+              <option *ngFor="let tech of technical" value="{{tech._id}}">
+                {{tech.nameTechnical}} {{tech.lastNameTechnical}}</option>
+            </select>
+          </div>
+
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Seguro</label>
+            <select class="uk-select" formControlName="insurance" [(ngModel)]="request.insurance">
+              <option *ngFor="let insu of insurance" value="{{insu._id}}">{{insu.nameInsurance}}</option>
+            </select>
+          </div>
+
+          <div class="uk-width-1-1@s">
+            <label class="uk-form-label" for="form-stacked-text">Comentario Inicial</label>
+            <textarea class="uk-textarea" formControlName="commentary" [(ngModel)]="request.commentary"></textarea>
+          </div>
+
+          <div class="uk-width-1-1@s">
+            <label class="uk-form-label" for="form-stacked-text">Materiales</label>
+            <textarea class="uk-textarea" formControlName="materials" [(ngModel)]="request.materials"></textarea>
+          </div>
+
+
+          <div class="uk-width-1-1@s">
+            <label class="uk-form-label" for="form-stacked-text">Movimiento Economico</label>
+            <input class="uk-input" type="text" [(ngModel)]="request.economicMovement"
+              formControlName="economicMovement" />
+          </div>
+
+          <div class="uk-width-1-1@s uk-flex uk-flex-center">
+            <button class="uk-button uk-button-primary submitbutton" type="submit" [disabled]="!formGroupUser.valid">
+              Guardar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="uk-section-small">
+  <div class="uk-container uk-container-large">
+    <div>
+      <div class="uk-card uk-card-default uk-card-body">
+        <h1 style="text-align: center;"> Comentarios</h1>
+        <div uk-alert *ngFor="let com of comentarios">
+          <a class="uk-alert-close" uk-close></a>
+          <strong>Fecha Comentario {{com.created}}</strong>
+          <p>{{com.commentary}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="floating-button" style="border-radius: 50%;" routerLink="/request/add/commentary/{{idRequest}}">
+  <span class="plus-circle" uk-icon="plus"></span>
+</div>

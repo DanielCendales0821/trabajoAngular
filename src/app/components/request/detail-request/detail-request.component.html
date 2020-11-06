@@ -1,0 +1,134 @@
+<div class="uk-section-small uk-section-default header">
+  <div class="uk-container uk-container-large">
+    <h1><span class="ion-speedometer"></span> Detalle Requerimiento</h1>
+    <ul class="uk-breadcrumb">
+      <li><a routerLink="">Inicio</a></li>
+      <li><a routerLink="/request">Requerimientos</a></li>
+      <li><span>Detalle Requerimiento</span></li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="uk-section-small">
+  <div class="uk-container uk-container-large">
+    <div>
+      <div class="uk-card uk-card-default uk-card-body">
+
+        <form class="uk-grid-small" [formGroup]="formGroupUser" uk-grid (ngSubmit)="captureInformation()">
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Direccion</label>
+            <input class="uk-input" type="text" disabled formControlName="address" [(ngModel)]="request.address" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Ciudad</label>
+            <input class="uk-input" type="text" disabled formControlName="city" [(ngModel)]="request.city" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Departamento</label>
+            <input class="uk-input" type="text" disabled formControlName="department"
+              [(ngModel)]="request.department" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Asistencia</label>
+            <input class="uk-input" type="text" disabled formControlName="reference" [(ngModel)]="request.reference" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Numero</label>
+            <input class="uk-input" type="text" disabled formControlName="phone" [(ngModel)]="request.phone" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Valor Serviasitimos</label>
+            <input disabled currencyMask [options]="{ prefix: '$ ', thousands: '.', decimal: ',' }" class="uk-input"
+              type="text" formControlName="valueAsistimos" [(ngModel)]="request.valueAsistimos" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Valor Cliente</label>
+            <input disabled currencyMask [options]="{ prefix: '$ ', thousands: '.', decimal: ',' }" class="uk-input"
+              type="text" formControlName="valueCostumer" [(ngModel)]="request.valueCostumer" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Valor Materiales</label>
+            <input disabled currencyMask [options]="{ prefix: '$ ', thousands: '.', decimal: ',' }" class="uk-input"
+              type="text" formControlName="valueMaterials" [(ngModel)]="request.valueMaterials" />
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Estado Requerimiento</label>
+            <select disabled class="uk-select" formControlName="state" [(ngModel)]="request.state">
+              <option value="EN PROGRESO">EN PROGRESO</option>
+              <option value="PENDIENTE">PENDIENTE</option>
+              <option value="TERMINADO">TERMINADO</option>
+            </select>
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Servicio</label>
+            <select disabled class="uk-select" formControlName="service" [(ngModel)]="request.service">
+              <option *ngFor="let serv of service" value="{{serv._id}}">
+                {{serv.nameService}}</option>
+            </select>
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Cliente</label>
+            <select disabled class="uk-select" formControlName="costumer" [(ngModel)]="request.costumer">
+              <option *ngFor="let custom of costumers" value="{{custom._id}}">
+                {{custom.nameCostumer}}</option>
+            </select>
+          </div>
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Tecnico</label>
+            <select disabled class="uk-select" formControlName="technical" [(ngModel)]="request.technical">
+              <option *ngFor="let tech of technical" value="{{tech._id}}">
+                {{tech.nameTechnical}} {{tech.lastNameTechnical}}</option>
+            </select>
+          </div>
+
+
+          <div class="uk-width-1-2@s">
+            <label class="uk-form-label" for="form-stacked-text">Seguro</label>
+            <select disabled class="uk-select" formControlName="insurance" [(ngModel)]="request.insurance">
+              <option *ngFor="let insu of insurance" value="{{insu._id}}">{{insu.nameInsurance}}</option>
+            </select>
+          </div>
+
+          <div class="uk-width-1-1@s">
+            <label class="uk-form-label" for="form-stacked-text">Comentario Inicial</label>
+            <textarea disabled class="uk-textarea" formControlName="commentary"
+              [(ngModel)]="request.commentary"></textarea>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="uk-section-small">
+  <div class="uk-container uk-container-large">
+    <div>
+      <div class="uk-card uk-card-default uk-card-body">
+        <h1 style="text-align: center;"> Comentarios</h1>
+        <div uk-alert *ngFor="let com of comentarios">
+          <a class="uk-alert-close" uk-close></a>
+          <strong>Fecha Comentario {{com.created}}</strong>
+          <p>{{com.commentary}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="floating-button" style="border-radius: 50%;" routerLink="/request/add/commentary/{{idRequest}}">
+  <span class="plus-circle" uk-icon="plus"></span>
+</div>
